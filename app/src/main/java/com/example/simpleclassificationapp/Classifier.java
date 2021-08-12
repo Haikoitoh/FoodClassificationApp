@@ -30,7 +30,7 @@ public class Classifier {
 
     private Context context;
     Interpreter tflite;
-    final String ASSOCIATED_AXIS_LABELS = "labels.txt";
+    final String ASSOCIATED_AXIS_LABELS = "labels1.txt";
     List<String> associatedAxisLabels = null;
 
     public Classifier(Context context)
@@ -46,7 +46,7 @@ public class Classifier {
         try{
             MappedByteBuffer tfliteModel
                     = FileUtil.loadMappedFile(context,
-                    "food_22_metadata.tflite");
+                    "cake_metadata.tflite");
             tflite = new Interpreter(tfliteModel);
         } catch (IOException e){
             Log.e("tfliteSupport", "Error reading model", e);
@@ -71,12 +71,12 @@ public class Classifier {
         tensorImage.load(bitmap);
         tensorImage = imageProcessor.process(tensorImage);
         TensorBuffer probabilityBuffer =
-                TensorBuffer.createFixedSize(new int[]{1, 22}, DataType.FLOAT32);
+                TensorBuffer.createFixedSize(new int[]{1, 20}, DataType.FLOAT32);
         if(null != tflite) {
             tflite.run(tensorImage.getBuffer(), probabilityBuffer.getBuffer());
         }
         TensorProcessor probabilityProcessor =
-                new TensorProcessor.Builder().add(new NormalizeOp(0, 1)).build();
+                new TensorProcessor.Builder().add(new NormalizeOp(0, 255)).build();
 
         String result = " ";
         if (null != associatedAxisLabels) {

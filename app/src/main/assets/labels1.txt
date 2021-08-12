@@ -1,0 +1,20 @@
+applesauce_cake
+ carrot_cake
+ cheesecake
+ chiffon_cake
+ chocolate_cake
+ coconut_cake
+ coffee_cake
+ crab_cake
+ crumb_cake
+ cupcake
+ eggles_cake
+ fruitcake
+ marble_cake
+ pancake
+ pound_cake
+ red_velvet_cake
+ rock_cake
+ sponge_cake
+ strawberry_shortcake
+ upside_down_cake
